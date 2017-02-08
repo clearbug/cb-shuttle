@@ -1,0 +1,40 @@
+<div class="cb-shuttle">
+    <div class="col-xs-5">
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-bind="leftTitle"></div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <input type="checkbox" ng-model="selectAll" ng-change="selectAllChange()">
+                        <input type="text" class="cb-shuttle-form-controll" placeholder="{{ searchNamePlaceholder }}" ng-model="searchName">
+                    </li>
+                    <li class="list-group-item" ng-repeat="waitingSelectItem in waitingSelectList | filter:searchName | orderBy:'id'">
+                        <input type="checkbox" ng-model="waitingSelectItem.selected">
+                        <span>{{ waitingSelectItem.name }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="cb-shuttle-middle">
+            <a class="btn btn-primary" ng-click="transferAllWaitingToSelected()"><span class="glyphicon glyphicon-forward"></span></a>
+            <a class="btn btn-primary" ng-click="transferSomeWaitingToSelected()"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary" ng-click="transferSomeSelectedToWaiting()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="btn btn-primary" ng-click="transferAllSelectedToWaiting()"><span class="glyphicon glyphicon-backward"></span></a>
+        </div>
+    </div>
+    <div class="col-xs-5">
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-bind="rightTitle"></div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="selectedItem in selectedList | orderBy:'id'">
+                        <input type="checkbox" ng-model="selectedItem.selected">
+                        <span>{{ selectedItem.name }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

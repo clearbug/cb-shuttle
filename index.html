@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Parse Expression Example</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/simpleShuttle.css">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div class="container" ng-controller="myController">
+        <div class="row" style="margin-top: 20px;">
+            <div simple-shuttle left-title="leftTitle" right-title="rightTitle" waiting-select-list="waitingSelectList" selected-list="selectedList" search-name-placeholder="searchNamePlaceholder"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="directives/simpleShuttle.js"></script>
+<script type="text/javascript">
+    angular.module('myApp', ['cbShuttle'])
+        .controller('myController', function($scope, $timeout){
+            $scope.leftTitle = '待选列表';
+            $scope.rightTitle = '已选列表';
+            $scope.searchNamePlaceholder = '请输入城市名';
+            $scope.waitingSelectList = [
+                {
+                    id: 1,
+                    name: '全国',
+                    selected: false
+                }, 
+                {
+                    id: 2,
+                    name: '深圳市',
+                    selected: false
+                }, 
+                {
+                    id: 3,
+                    name: '广州市',
+                    selected: false
+                }, 
+                {
+                    id: 4,
+                    name: '上海市',
+                    selected: false
+                }, 
+                {
+                    id: 5,
+                    name: '北京市',
+                    selected: false
+                }, 
+            ];
+            $scope.selectedList = [
+                {
+                    id: 6,
+                    name: '南京市',
+                    selected: false
+                }, 
+                {
+                    id: 7,
+                    name: '杭州市',
+                    selected: false
+                }
+            ];
+            $timeout(function(){
+                console.log($scope.waitingSelectList);
+                console.log($scope.selectedList);
+            }, 10000);
+        });
+</script>
+</html>
